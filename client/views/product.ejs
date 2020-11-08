@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Produtos</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>Lista de Produtos</h1>
     <p>Me da nota maxima krai!</p>
     <ul>
-        <% for (const iterator of productList) { %>                    
-            <li> <a href="/checkout?produto=<%= iterator.name %>"><%= iterator.name %> </a> 
+        <% for (const iterator of productList) { %>
+        <form class="buyProd" id="<%= iterator.name %>" method="post" action="/checkout">
+            <li>  <button type="submit" value="Submit"><%= iterator.name %></button> | Value R$: <%= iterator.preco %>
                 <ul>
-                    <li>Valor R$ <%= iterator.preco %> </li>
+                    <input hidden class="input" id="preco" name="preco"  value="<%= iterator.preco %>" />
+                    <input hidden class="input" id="name" name="name" value="<%= iterator.name %>" />
+                    <input hidden class="input" id="identificador" name="identificador"value="<%= iterator.identificador %>" />
                 </ul>
             </li>
+        </form>
         <% } %>
     </ul>
-  </body>
-</html>
-
+</body>
 <script>
-    
+
 </script>
+
+</html>

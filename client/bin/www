@@ -13,8 +13,8 @@ var http = require('http');
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
 
+app.set('port', port);
 /**
  * Create HTTP server.
  */
@@ -70,7 +70,12 @@ function onError(error) {
       break;
     case 'EADDRINUSE':
       console.error(bind + ' is already in use');
+      try{
+        port =  normalizePort(process.env.PORT || (port+1).toString());
+        server.listen(port);
+      }catch(e){
       process.exit(1);
+      }
       break;
     default:
       throw error;

@@ -2,12 +2,21 @@
 <html>
 
 <body>
-    <form action="/">
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" value="John"><br>
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname" value="Doe"><br><br>
-        <input type="submit" value="Submit">
+    <form action="/checkout/confirm" method="POST">
+        <p style="
+            word-wrap: break-word;      /* IE 5.5-7 */
+            white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+            white-space: pre-wrap;      /* current browsers */
+        ">
+            Tem certeza que Deseja comprar o produto?
+            Nome: <%= produto.name %>
+            Valor: <%= produto.preco %>
+            ID: <%= produto.identificador %>
+        </p>
+        <input hidden class="input" id="preco" name="preco" value="<%= produto.preco %>" />
+        <input hidden class="input" id="name" name="name" value="<%= produto.name %>" />
+        <input hidden class="input" id="identificador" name="identificador" value="<%= produto.identificador %>" />
+            <input type="submit" value="Submit">
     </form>
 </body>
 
